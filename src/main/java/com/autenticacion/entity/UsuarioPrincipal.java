@@ -11,13 +11,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UsuarioPrincipal  implements UserDetails{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String nombre;
 	
 	private String nombreUsuario;
 	
 	private String email;
 	
-	private String contraseña;
+	private String password;
 	
 	
 	private Collection<? extends GrantedAuthority> authorities;
@@ -29,7 +34,7 @@ public class UsuarioPrincipal  implements UserDetails{
 		this.nombre = nombre;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		this.contraseña = contraseña;
+		this.password = contraseña;
 		this.authorities = authorities;
 	}
 	
@@ -52,7 +57,7 @@ public class UsuarioPrincipal  implements UserDetails{
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return contraseña;
+		return password;
 	}
 
 

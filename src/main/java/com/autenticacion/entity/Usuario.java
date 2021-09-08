@@ -28,7 +28,7 @@ public class Usuario {
 	@NotNull
 	private String email;
 	@NotNull
-	private String contraseña;
+	private String password;
 	@NotNull
 	@ManyToMany
 	@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name="usuario_id"),
@@ -46,7 +46,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		this.contraseña = contraseña;
+		this.password = contraseña;
 	}
 
 
@@ -91,12 +91,12 @@ public class Usuario {
 
 
 	public String getContraseña() {
-		return contraseña;
+		return password;
 	}
 
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.password = contraseña;
 	}
 
 
