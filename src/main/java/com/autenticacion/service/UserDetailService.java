@@ -1,7 +1,5 @@
 package com.autenticacion.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,7 +10,6 @@ import com.autenticacion.entity.Usuario;
 import com.autenticacion.entity.UsuarioPrincipal;
 
 @Service
-@Transactional
 public class UserDetailService implements UserDetailsService{
 
 	@Autowired

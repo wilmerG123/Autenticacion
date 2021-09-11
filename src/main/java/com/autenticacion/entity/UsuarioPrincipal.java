@@ -10,11 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UsuarioPrincipal  implements UserDetails{
 	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private String nombre;
 	
@@ -28,13 +23,13 @@ public class UsuarioPrincipal  implements UserDetails{
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	
-	public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String contraseña,
+	public UsuarioPrincipal(String nombre, String nombreUsuario, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		
 		this.nombre = nombre;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		this.password = contraseña;
+		this.password = password;
 		this.authorities = authorities;
 	}
 	
@@ -43,14 +38,15 @@ public class UsuarioPrincipal  implements UserDetails{
 		List<GrantedAuthority>authorities=
 				usuario.getRoles().stream().map(rol -> new SimpleGrantedAuthority(rol.getRolNombre()
 						.name())).collect(Collectors.toList());
-		return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(), usuario.getContraseña(), authorities);
+		return new UsuarioPrincipal(usuario.getNombre(), usuario.getNombreUsuario(), usuario.getEmail(),
+				usuario.getPassword(), authorities);
 	}
 
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return null;
+		return authorities;
 	}
 
 

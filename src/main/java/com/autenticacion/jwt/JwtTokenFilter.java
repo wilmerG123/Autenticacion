@@ -19,23 +19,27 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtTokenFilter extends OncePerRequestFilter {
 
 	private final static Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
-	
-	
+
 	@Autowired
 	JwtProvider jwtprovider;
 	@Autowired
 	UserDetailsService userdetailservice;
-	
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain)
 			throws ServletException, IOException {
 
 		try {
-			String token = getToken(req);
-			if(token != null && jwtprovider.validateToken(token)) {
+			String token = this.getToken(req);
+			if (token != null && jwtprovider.validateToken(token)) {
+
 				String nombreUsuario = jwtprovider.getNombreUsuarioFromToken(token);
+				
 				UserDetails userdetails = userdetailservice.loadUserByUsername(nombreUsuario);
-				UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userdetails, null, userdetails.getAuthorities());
+				
+				UsernamePasswordAuthenticationToken auth = 
+						new UsernamePasswordAuthenticationToken(userdetails, null,
+						userdetails.getAuthorities());
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 		} catch (Exception e) {
@@ -45,12 +49,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 	}
 
 	private String getToken(HttpServletRequest request) {
-		
+
 		String header = request.getHeader("Authorization");
 
-		if (header != null && header.startsWith("Bearer"))
+		if (header != null && header.startsWith("Bearer")) {
 
-			return header.replace("bearer", "");
+			return header.replace("Bearer ","");
+		}
 
 		return null;
 

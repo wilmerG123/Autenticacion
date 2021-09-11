@@ -33,7 +33,7 @@ import com.autenticacion.service.UsuarioService;
 import com.autenticacion.utils.Mensaje;
 
 @RestController
-@RequestMapping("/netv")
+@RequestMapping("/auth")
 @CrossOrigin
 public class AuthController {
 

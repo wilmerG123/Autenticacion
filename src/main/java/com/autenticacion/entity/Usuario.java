@@ -33,7 +33,7 @@ public class Usuario {
 	@ManyToMany
 	@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name="usuario_id"),
 	inverseJoinColumns =  @JoinColumn(name="rol_id"))
-	private Set<Rol>roles = new HashSet<>();
+	private Set<Rol> roles = new HashSet<>();
 	
 	
 	public Usuario() {
@@ -41,12 +41,12 @@ public class Usuario {
 	}
 
 
-	public Usuario(String nombre, String nombreUsuario, String email, String contraseña) {
+	public Usuario(String nombre, String nombreUsuario, String email, String password) {
 		
 		this.nombre = nombre;
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		this.password = contraseña;
+		this.password = password;
 	}
 
 
@@ -90,12 +90,12 @@ public class Usuario {
 	}
 
 
-	public String getContraseña() {
+	public String getPassword() {
 		return password;
 	}
 
 
-	public void setContraseña(String contraseña) {
+	public void setPassword(String contraseña) {
 		this.password = contraseña;
 	}
 
