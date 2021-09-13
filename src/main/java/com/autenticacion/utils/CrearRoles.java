@@ -8,20 +8,20 @@ import com.autenticacion.entity.Rol;
 import com.autenticacion.enums.RolNombre;
 import com.autenticacion.service.RolService;
 
-//@Component
+@Component
 public class CrearRoles implements CommandLineRunner{
 
 
-	/*
-	 * @Autowired
+	
+	@Autowired
 	RolService rolService;
-	*/
+	
 	
 	
 	@Override
 	public void run(String... args) throws Exception {
 		
-		/*
+		
 		Rol rolAmin = new Rol(RolNombre.ROLE_ADMIN);
 		Rol rolUser = new Rol (RolNombre.ROLE_USER);
 		
@@ -29,7 +29,7 @@ public class CrearRoles implements CommandLineRunner{
 		
 		rolService.save(rolUser);
 		
-		*/
+		
 		
 	}
 
